@@ -15,7 +15,7 @@ app.get('/rutaQuery', (req, res) => {
 })
 
 
-app.listen(8080, () => console.log("servidor arriba"))
+app.listen(8080, () => { console.log("servidor arriba") })
 
 
 
