@@ -1,15 +1,24 @@
 import express from 'express';
-import handlebars from 'express-handlebars'
+import handlebars from 'express-handlebars';
 import __dirname from './utils.js';
+import viewRouter from './routes/views.router.js'
 
 const app = express();
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars');
-app.use(express.static(__dirname + 'public'))
+app.use('/', viewRouter);
+app.use(express.static(__dirname + '/public'))
 
-console.log(__dirname)
+
+
+
+
+
+
+
+
 /*
 app.get('/', (req, res) => {
     let usuario = {
@@ -17,7 +26,7 @@ app.get('/', (req, res) => {
     }
     res.render('index', usuario)
 })
-*/
+/*
 const users = [
     {
         nombre: "Usuario1",
@@ -27,22 +36,8 @@ const users = [
         telefono: 123456789
     },
 ]
+*/
 
-let food = [
-    { name: "PERA", PRICE: "100" }
-
-]
-
-app.get('/', (req, res) => {
-    let usuario = {
-        name: "veronnica",
-        rol: "admin"
-    }
-    res.render('index', {
-        user: usuario,
-        isAdmin: usuario.rol === 'admin', food
-    })
-})
 
 
 
