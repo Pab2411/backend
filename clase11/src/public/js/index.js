@@ -35,3 +35,12 @@ socket.on('messageLogs', data => {
     log.innerHTML = messages;
 })
 
+
+socket.on('newUserConnected', data => {
+    if (!user) return;
+    Swal.fire({
+        text: "Nuevo usuario conectado",
+        toast: true,
+        position: 'top-right'
+    })
+})

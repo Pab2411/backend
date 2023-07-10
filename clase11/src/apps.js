@@ -21,11 +21,15 @@ let messages = [];
 
 
 io.on('connection', socket => {
-    console.log('nuevo cliente conectado')
+    console.log('nuevo cliente conectado');
 
     socket.on('message', data => {
         messages.push(data)
         io.emit('messageLogs', messages)
         console.log(data)
     })
+    socket.on('authenticated', data => {
+        socket.broadcast.emit('newUserConnected', data);
+    })
 })
+
